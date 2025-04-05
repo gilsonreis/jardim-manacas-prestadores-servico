@@ -1,0 +1,44 @@
+.pagination .page-item a.page-link {
+    color: #0ca279 !important;
+}
+
+.pagination .page-item.active a.page-link {
+    background-color: #00C292 !important;
+    border: 1px solid #0ca279 !important;
+    color: #fff !important;
+}
+
+.form-control {
+    appearance: auto;
+}
+
+.btns-salvar {
+    margin-top: 20px
+}
+
+.kv-table-header th {
+    background-color: #f1f1f1 !important;
+}
+
+.kv-table-header a {
+    color: #333;
+    text-decoration: none;
+}
+
+.btn-success {
+    color: #fff;
+}
+
+.breadcrumb-item a {
+    text-decoration: none;
+    color: #252B36;
+}
+
+.breadcrumb-item a:hover {
+    color: #0ca279;
+    text-decoration: underline;
+}
+
+.help-block {
+    color: #f00;
+}
