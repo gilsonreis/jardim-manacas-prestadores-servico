@@ -11,6 +11,7 @@ use Yii;
  * @property int $provider_id
  * @property int $user_id
  * @property string $path
+ * @property string $thumb
  * @property string|null $description
  * @property string $created_at
  *
@@ -34,15 +35,15 @@ class ProviderPhoto extends \yii\db\ActiveRecord
     {
         return [
             [['description'], 'default', 'value' => null],
-            [['provider_id', 'user_id', 'path'], 'required'],
+            [['provider_id', 'user_id'], 'required'],
             [['provider_id', 'user_id'], 'integer'],
             [['description'], 'string'],
             [['created_at'], 'safe'],
-            [['path'], 'string', 'max' => 255],
+            [['path', 'thumb'], 'string', 'max' => 255],
             [['provider_id'], 'exist', 'skipOnError' => true, 'targetClass' => Provider::class, 'targetAttribute' => ['provider_id' => 'id']],
             [['user_id'], 'exist', 'skipOnError' => true, 'targetClass' => User::class, 'targetAttribute' => ['user_id' => 'id']],
             [['provider_id', 'user_id'], 'safe'],
-            [['path'], 'file', 'extensions' => ['png', 'jpg', 'jpeg'], 'maxFiles' => 8],
+//            [['path'], 'file', 'extensions' => ['png', 'jpg', 'jpeg'], 'maxFiles' => 8],
         ];
     }
 
@@ -56,6 +57,7 @@ class ProviderPhoto extends \yii\db\ActiveRecord
             'provider_id' => 'Prestador',
             'user_id' => 'Usuário',
             'path' => 'Imagem',
+            'thumb' => 'Miniatura',
             'description' => 'Descrição',
             'created_at' => 'Criado em',
         ];

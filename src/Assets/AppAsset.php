@@ -21,12 +21,16 @@ class AppAsset extends AssetBundle
     public $baseUrl = '@web';
     public $css = [
         'https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css',
+        'https://cdn.jsdelivr.net/npm/lightgallery@2.7.1/css/lightgallery-bundle.min.css',
         '/vendors/simplebar/css/simplebar.css',
         '/css/style.css',
         '/css/examples.css',
         '/css/site.css',
     ];
     public $js = [
+        'https://cdn.jsdelivr.net/npm/lightgallery@2.7.1/lightgallery.umd.min.js',
+        'https://cdn.jsdelivr.net/npm/lightgallery@2.7.1/plugins/zoom/lg-zoom.umd.min.js',
+        'https://cdn.jsdelivr.net/npm/lightgallery@2.7.1/plugins/thumbnail/lg-thumbnail.umd.min.js',
         '/js/config.js',
         '/js/color-modes.js',
         '/vendors/@coreui/coreui/js/coreui.bundle.min.js',

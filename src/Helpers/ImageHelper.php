@@ -38,13 +38,13 @@ class ImageHelper
      * @param int $quality Qualidade da imagem final (1 a 100)
      * @return bool true em caso de sucesso
      */
-    public static function resizeCrop(string $source, int $width = 300, int $height = 300, int $quality = 85): bool
+    public static function resizeCrop(string $source, string $path, int $width = 300, int $height = 300, int $quality = 85): bool
     {
         try {
             Image::getImagine()
                 ->open($source)
                 ->thumbnail(new Box($width, $height), ImageInterface::THUMBNAIL_OUTBOUND)
-                ->save($source, ['quality' => $quality]);
+                ->save($path, ['quality' => $quality]);
             return true;
         } catch (\Throwable $e) {
             \Yii::error('Erro ao redimensionar com crop: ' . $e->getMessage(), __METHOD__);

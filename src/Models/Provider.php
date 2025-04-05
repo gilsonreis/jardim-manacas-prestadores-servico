@@ -92,8 +92,8 @@ class Provider extends \yii\db\ActiveRecord
             'mobile_fone' => 'Celular',
             'contact_name' => 'Nome do vendedor',
             'contact_phone' => 'Telefone do vendedor',
-            'created_at' => 'Created At',
-            'updated_at' => 'Updated At',
+            'created_at' => 'Criado em',
+            'updated_at' => 'Alterado em',
         ];
     }
 

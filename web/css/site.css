@@ -42,3 +42,11 @@
 .help-block {
     color: #f00;
 }
+
+.box-image-provider {
+    border: 1px solid #bbb;
+    border-radius: 10px;
+    margin: 5px 10px;
+    box-sizing: border-box;
+    width: 98.5%;
+}

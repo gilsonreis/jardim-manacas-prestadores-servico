@@ -21,7 +21,7 @@ $this->registerLinkTag(['rel' => 'icon', 'type' => 'image/x-icon', 'href' => Yii
 <!DOCTYPE html>
 <html lang='<?= Yii::$app->language ?>'>
 <head>
-    <title></title>
+    <title><?php echo $this->title ? $this->title . " | " : "" ?> Jardim dos Manacás - Sistema de Utilidades </title>
     <?php $this->head() ?>
 </head>
 <body>
