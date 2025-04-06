@@ -48,9 +48,23 @@ class BaseController extends \yii\web\Controller
                     [
                         'allow' => true,
                         'roles' => ['@'],
-                        'matchCallback' => fn () => Yii::$app->user->identity?->is_admin == 1,
-                    ],
+                        'matchCallback' => function ($rule, $action) {
+                            $user = Yii::$app->user?->identity;
+                            $controller = $action->controller->id;
 
+                            if (!$user) {
+                                return false;
+                            }
+
+                            // Bloquear completamente o controller 'user' para não-admins
+                            if ($controller === 'users' && !$user->is_admin) {
+                                return false;
+                            }
+
+                            // Apenas logado pode acessar (validado acima), mas o resto fica liberado
+                            return true;
+                        }
+                    ],
                 ],
             ],
         ];

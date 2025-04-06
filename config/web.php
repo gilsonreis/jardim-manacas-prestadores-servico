@@ -38,7 +38,7 @@ $config = [
             'identityClass' => 'App\Models\User',
             'enableAutoLogin' => false,
             'loginUrl' => ['/auth/login'],
-            'returnUrl' => ['/prestadores']
+            'returnUrl' => ['/dashboard'],
         ],
         'errorHandler' => YII_ENV_DEV && YII_DEBUG ? [
             'class' => 'lucidtaz\yii2whoops\ErrorHandler',

@@ -9,7 +9,7 @@ use App\Models\Provider;
 /**
  * Provier represents the model behind the search form of `App\Models\Provider`.
  */
-class Provider extends Provider
+class ProviderSearch extends Provider
 {
     /**
      * {@inheritdoc}
@@ -41,12 +41,12 @@ class Provider extends Provider
      */
     public function search($params, $formName = null)
     {
-        $query = Provider::find();
+        $query = ProviderSearch::find();
 
         // add conditions that should always apply here
 
         $dataProvider = new ActiveDataProvider([
-            'query' => $query,
+            'query' => $query
         ]);
 
         $this->load($params, $formName);

@@ -25,7 +25,6 @@ class AuthController extends \yii\web\Controller
         $model = new LoginForm();
         if ($model->load(Yii::$app->request->post()) && $model->login()) {
             $user = User::findIdentity($model->getUser()->id);
-            $user->last_login = date("Y-m-d H:i:s");
             $user->save(false);
 
             return $this->goBack();

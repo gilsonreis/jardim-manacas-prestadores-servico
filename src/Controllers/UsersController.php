@@ -2,8 +2,12 @@
 
 namespace App\Controllers;
 
+use App\Models\Forms\ProfileForm;
 use App\Models\User;
 use App\Models\Search\UserSearch;
+use Yii;
+use yii\db\Exception;
+use yii\helpers\VarDumper;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
@@ -117,6 +121,29 @@ class UsersController extends Controller
     }
 
     /**
+     * @throws Exception
+     * @throws \yii\base\Exception
+     */
+    public function actionProfile()
+    {
+        $form = new ProfileForm();
+        $user = Yii::$app->user->identity;
+
+        $form->loadFromUser($user);
+
+        if ($form->load(Yii::$app->request->post()) && $form->validate()) {
+            if ($form->save()) {
+                Yii::$app->session->setFlash('success', 'Perfil atualizado com sucesso.');
+                return $this->refresh();
+            }
+        }
+
+        return $this->render('profile', [
+            'model' => $form,
+        ]);
+    }
+
+    /**
      * Finds the User model based on its primary key value.
      * If the model is not found, a 404 HTTP exception will be thrown.
      * @param int $id ID
@@ -131,4 +158,5 @@ class UsersController extends Controller
 
         throw new NotFoundHttpException('The requested page does not exist.');
     }
+
 }

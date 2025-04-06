@@ -5,9 +5,10 @@ namespace App\Controllers;
 use App\Helpers\ImageHelper;
 use App\Models\Provider;
 use App\Models\ProviderPhoto;
-use App\Models\Search\Provider;
+use App\Models\Search\ProviderSearch;
 use Yii;
 use yii\db\Exception;
+use yii\filters\AccessControl;
 use yii\helpers\FileHelper;
 use yii\web\BadRequestHttpException;
 use yii\web\ForbiddenHttpException;
@@ -21,23 +22,6 @@ use yii\web\UploadedFile;
  */
 class ProviderController extends BaseController
 {
-    /**
-     * @inheritDoc
-     */
-    public function behaviors(): array
-    {
-        return array_merge(
-            parent::behaviors(),
-            [
-                'verbs' => [
-                    'class' => VerbFilter::class,
-                    'actions' => [
-                        'delete' => ['POST'],
-                    ],
-                ],
-            ]
-        );
-    }
 
     /**
      * Lists all Provider models.
@@ -46,7 +30,7 @@ class ProviderController extends BaseController
      */
     public function actionIndex()
     {
-        $searchModel = new Provider();
+        $searchModel = new ProviderSearch();
         $dataProvider = $searchModel->search($this->request->queryParams);
 
         return $this->render('index', [

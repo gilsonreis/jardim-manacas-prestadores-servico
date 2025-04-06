@@ -9,8 +9,8 @@ $viewUrl = Url::to(['provider/view', 'id' => $model->id]);
 ?>
 
 <div class="card mb-3 shadow-sm p-3">
-    <?php if ($model->canEdit()): ?>
         <div class="position-absolute top-0 end-0 p-2 d-flex gap-2">
+            <?php if ($model->canEdit()): ?>
             <?= Html::a('<i class="bi bi-pencil-square"></i>', ['provider/update', 'id' => $model->id], [
                 'class' => 'btn btn-sm btn-outline-primary',
                 'title' => 'Editar',
@@ -21,12 +21,12 @@ $viewUrl = Url::to(['provider/view', 'id' => $model->id]);
                 'data-confirm' => 'Tem certeza que deseja excluir este prestador?',
                 'data-method' => 'post',
             ]) ?>
+            <?php endif; ?>
             <?= Html::a('<i class="bi bi-image"></i> Adicionar imagens', ['provider/gallery-upload', 'id' => $model->id], [
                 'class' => 'btn btn-sm btn-outline-secondary',
                 'title' => 'Adicionar fotos',
             ]) ?>
         </div>
-    <?php endif; ?>
     <div class="row no-gutters align-items-center">
         <div class="col-md-3 text-center p-3">
             <a href="<?= $viewUrl ?>" class="hover-effect">

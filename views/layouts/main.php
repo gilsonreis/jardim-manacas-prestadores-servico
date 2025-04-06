@@ -35,7 +35,7 @@ $this->registerLinkTag(['rel' => 'icon', 'type' => 'image/x-icon', 'href' => Yii
                 onclick='coreui.Sidebar.getInstance(document.querySelector(&quot;#sidebar&quot;)).toggle()'></button>
     </div>
     <ul class='sidebar-nav' data-coreui='navigation' data-simplebar=''>
-        <li class='nav-item'><a class='nav-link' href='/'>
+        <li class='nav-item'><a class='nav-link' href='/dashboard'>
                 <svg class='nav-icon'>
                     <use xlink:href='/vendors/@coreui/icons/svg/free.svg#cil-speedometer'></use>
                 </svg>
@@ -49,6 +49,7 @@ $this->registerLinkTag(['rel' => 'icon', 'type' => 'image/x-icon', 'href' => Yii
                 Prestador de Serviço
             </a>
         </li>
+        <?php if(Yii::$app->user?->identity?->is_admin === 1):?>
         <li class='nav-item'>
             <a class='nav-link' href='/fix-request'>
                 <svg class='nav-icon'>
@@ -57,12 +58,32 @@ $this->registerLinkTag(['rel' => 'icon', 'type' => 'image/x-icon', 'href' => Yii
                 Solicitação de Reparos
             </a>
         </li>
+
         <li class='nav-item'>
             <a class='nav-link' href='/users'>
                 <svg class='nav-icon'>
                     <use xlink:href='/vendors/@coreui/icons/svg/free.svg#cil-user'></use>
                 </svg>
                 Usuários
+            </a>
+        </li>
+        <?php endif;?>
+        <li class='nav-item'>
+            <hr>
+            <a class='nav-link' href='/profile'>
+                <svg class='nav-icon'>
+                    <use xlink:href='/vendors/@coreui/icons/svg/free.svg#cil-mood-good'></use>
+                </svg>
+                Meu Perfil
+            </a>
+        </li>
+        <li class='nav-item'>
+            <hr>
+            <a class='nav-link text-danger' href='/auth/logout'>
+                <svg class='nav-icon'>
+                    <use xlink:href='/vendors/@coreui/icons/svg/free.svg#cil-account-logout'></use>
+                </svg>
+                Sair
             </a>
         </li>
     </ul>
@@ -84,13 +105,6 @@ $this->registerLinkTag(['rel' => 'icon', 'type' => 'image/x-icon', 'href' => Yii
                 <li class='nav-item py-1 text-right'>
                     Bem vindo <br><strong><?php echo Yii::$app->user->identity->name ?></strong>
                 </li>
-                <li class='nav-item py-1'>
-                    <div class='vr h-100 mx-2 text-body text-opacity-75'></div>
-                </li>
-                <li class="nav-item">
-                    <a href="#" class="btn btn-link">Sair</a>
-                </li>
-
             </ul>
         </div>
         <div class='container-fluid px-4'>

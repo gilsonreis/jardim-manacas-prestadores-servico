@@ -43,7 +43,6 @@ class ProviderPhoto extends \yii\db\ActiveRecord
             [['provider_id'], 'exist', 'skipOnError' => true, 'targetClass' => Provider::class, 'targetAttribute' => ['provider_id' => 'id']],
             [['user_id'], 'exist', 'skipOnError' => true, 'targetClass' => User::class, 'targetAttribute' => ['user_id' => 'id']],
             [['provider_id', 'user_id'], 'safe'],
-//            [['path'], 'file', 'extensions' => ['png', 'jpg', 'jpeg'], 'maxFiles' => 8],
         ];
     }
 

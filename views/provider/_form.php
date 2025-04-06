@@ -66,9 +66,6 @@
 
     <div class="row">
         <div class="col-md-6">
-            <?= $form->field($model, 'accept_email')->checkbox(['default' => true]) ?>
-        </div>
-        <div class="col-md-6">
             <?= $form->field($model, 'logo')->fileInput() ?>
         </div>
     </div>

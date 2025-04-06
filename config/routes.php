@@ -6,4 +6,5 @@ return [
     '<controller:\w+>/<id:\d+>/view' => '<controller>/view',
     '<controller:\w+>/<id:\d+>/<action:\w+>' => '<controller>/<action>',
     '<controller:\w+>/<action:\w+>' => '<controller>/<action>',
+    'profile' => 'users/profile',
 ];

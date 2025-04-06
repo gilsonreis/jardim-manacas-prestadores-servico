@@ -15,6 +15,7 @@ use yii\web\IdentityInterface;
  * @property string $password
  * @property string $access_token
  * @property int|null $is_admin
+ * @property int|null $accept_email
  * @property string|null $photo
  * @property string $created_at
  * @property string $updated_at
@@ -42,13 +43,20 @@ class User extends \yii\db\ActiveRecord implements IdentityInterface
     {
         return [
             [['isDeleted'], 'default', 'value' => 0],
-            [['photo'], 'default', 'value' => 'no-image.png'],
+            [['photo'], 'default', 'value' => null],
             [['name', 'email', 'password', 'access_token'], 'required'],
-            [['is_admin', 'isDeleted'], 'integer'],
+            [['is_admin', 'isDeleted', 'accept_email'], 'integer'],
             [['created_at', 'updated_at'], 'safe'],
             [['name'], 'string', 'max' => 50],
             [['email'], 'string', 'max' => 120],
             [['password', 'access_token', 'photo'], 'string', 'max' => 80],
+            ['password', 'string', 'min' => 6],
+            [['repeatPassword'], 'compare', 'compareAttribute' => 'password',
+                'skipOnEmpty' => false, 'message' => 'Senhas não conferem.',
+                'when' => function ($model) {
+                    return $model->password !== null && $model->password !== '';
+                }
+            ],
         ];
     }
 
@@ -64,10 +72,13 @@ class User extends \yii\db\ActiveRecord implements IdentityInterface
             'password' => 'Senha',
             'access_token' => 'Access Token',
             'is_admin' => 'Administrador',
+            'accept_email' => 'Desejo receber e-mails de novos prestadores?',
             'photo' => 'Foto',
             'created_at' => 'Created At',
             'updated_at' => 'Updated At',
             'isDeleted' => 'Is Deleted',
+            'currentPassword' => 'Senha Atual',
+            'repeatPassword' => 'Repetir Senha',
         ];
     }
 
@@ -132,7 +143,7 @@ class User extends \yii\db\ActiveRecord implements IdentityInterface
      */
     public function getAuthKey()
     {
-        return $this->auth_key ?? "";
+        return $this->auth_key;
     }
 
     /**
@@ -145,7 +156,7 @@ class User extends \yii\db\ActiveRecord implements IdentityInterface
      */
     public function validateAuthKey($authKey)
     {
-        throw new NotSupportedException();
+        return $this->auth_key === $authKey;
     }
 
     public function validatePassword($password)

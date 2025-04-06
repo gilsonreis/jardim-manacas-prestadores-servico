@@ -10,7 +10,7 @@ use kartik\grid\ActionColumn;
 use yii\widgets\ListView;
 use yii\widgets\Pjax;
 /** @var yii\web\View $this */
-/** @var App\Models\Search\Provider $searchModel */
+/** @var App\Models\Search\ProviderSearch $searchModel */
 /** @var yii\data\ActiveDataProvider $dataProvider */
 
 $this->title = 'Prestadores de Serviço';

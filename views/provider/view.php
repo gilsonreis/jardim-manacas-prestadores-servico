@@ -34,7 +34,7 @@ $this->params['breadcrumbs'][] = $this->title;
         'model' => $model,
         'attributes' => [
             'name',
-            'service_description:ntext',
+            'service_description:html',
             'logo:image',
             'serviceType.name',
             'phone',

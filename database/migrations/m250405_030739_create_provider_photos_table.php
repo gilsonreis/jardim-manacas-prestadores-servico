@@ -17,6 +17,7 @@ class m250405_030739_create_provider_photos_table extends Migration
             'provider_id' => $this->integer()->notNull(),
             'user_id' => $this->integer()->notNull(),
             'path' => $this->string()->notNull(),
+            'thumb' => $this->string()->notNull(),
             'description' => $this->text()->defaultValue(null),
             'created_at' => $this->timestamp()->defaultExpression('CURRENT_TIMESTAMP'),
         ]);
