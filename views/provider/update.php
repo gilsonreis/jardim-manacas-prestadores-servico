@@ -5,10 +5,10 @@ use yii\helpers\Html;
 /** @var yii\web\View $this */
 /** @var App\Models\Provider $model */
 
-$this->title = 'Editando prestador ' . $model->name;
-$this->params['breadcrumbs'][] = ['label' => 'Providers', 'url' => ['index']];
+$this->title = 'Editando ' . $model->name;
+$this->params['breadcrumbs'][] = ['label' => 'Prestador', 'url' => ['index']];
 $this->params['breadcrumbs'][] = ['label' => $model->name, 'url' => ['view', 'id' => $model->id]];
-$this->params['breadcrumbs'][] = 'Update';
+$this->params['breadcrumbs'][] = 'Editando ' . $model->name;
 ?>
 <div class='card'>
     <div class='card-header d-flex justify-content-between'>

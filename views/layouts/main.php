@@ -49,14 +49,16 @@ $this->registerLinkTag(['rel' => 'icon', 'type' => 'image/x-icon', 'href' => Yii
                 Prestador de Serviço
             </a>
         </li>
-        <li class='nav-item'><a class='nav-link' href='/provider'>
+        <li class='nav-item'>
+            <a class='nav-link' href='/fix-request'>
                 <svg class='nav-icon'>
                     <use xlink:href='/vendors/@coreui/icons/svg/free.svg#cil-bug'></use>
                 </svg>
                 Solicitação de Reparos
             </a>
         </li>
-        <li class='nav-item'><a class='nav-link' href='/provider'>
+        <li class='nav-item'>
+            <a class='nav-link' href='/users'>
                 <svg class='nav-icon'>
                     <use xlink:href='/vendors/@coreui/icons/svg/free.svg#cil-user'></use>
                 </svg>
