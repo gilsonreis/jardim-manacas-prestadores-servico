@@ -34,6 +34,7 @@ use yii\db\Expression;
 class Provider extends \yii\db\ActiveRecord
 {
 
+    const EVENT_AFTER_PROVIDER_CREATED = 'afterProviderCreated';
 
     public function behaviors(): array
     {
@@ -149,6 +150,15 @@ class Provider extends \yii\db\ActiveRecord
     {
         $user = Yii::$app->user;
         return $user->id === $this->user_id || $user->identity->isAdmin;
+    }
+
+    public function afterSave($insert, $changedAttributes)
+    {
+        parent::afterSave($insert, $changedAttributes);
+
+        if ($insert) {
+            $this->trigger(self::EVENT_AFTER_PROVIDER_CREATED);
+        }
     }
 
 }
