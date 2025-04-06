@@ -33,6 +33,5 @@ tests/_support/_generated
 /.vagrant
 
 .env
-web/uploads/logos/*
-!web/uploads/logos/.gitkeep
 web/assets/*
+web/uploads/*

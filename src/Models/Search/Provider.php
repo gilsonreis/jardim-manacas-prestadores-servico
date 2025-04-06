@@ -9,7 +9,7 @@ use App\Models\Provider;
 /**
  * Provier represents the model behind the search form of `App\Models\Provider`.
  */
-class Provier extends Provider
+class Provider extends Provider
 {
     /**
      * {@inheritdoc}

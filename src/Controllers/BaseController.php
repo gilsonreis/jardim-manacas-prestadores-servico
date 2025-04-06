@@ -16,7 +16,7 @@ class BaseController extends \yii\web\Controller
     /**
      * @throws BadRequestHttpException
      */
-    public function beforeAction($action)
+    public function beforeAction($action): ?bool
     {
         if (Yii::$app->user->isGuest) {
             return $this->redirect(['/auth/login'])->send();
@@ -33,21 +33,22 @@ class BaseController extends \yii\web\Controller
     /**
      * {@inheritdoc}
      */
-    public function behaviors()
+    public function behaviors(): array
     {
         return [
             'verbs' => [
-                'class' => VerbFilter::className(),
+                'class' => VerbFilter::class,
                 'actions' => [
                     'delete' => ['POST'],
                 ],
             ],
             'access' => [
-                'class' => AccessControl::className(),
+                'class' => AccessControl::class,
                 'rules' => [
                     [
                         'allow' => true,
-                        'roles' => ['@']
+                        'roles' => ['@'],
+                        'matchCallback' => fn () => Yii::$app->user->identity?->is_admin == 1,
                     ],
 
                 ],

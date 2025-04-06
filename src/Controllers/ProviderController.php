@@ -5,14 +5,11 @@ namespace App\Controllers;
 use App\Helpers\ImageHelper;
 use App\Models\Provider;
 use App\Models\ProviderPhoto;
-use App\Models\Search\Provier;
+use App\Models\Search\Provider;
 use Yii;
 use yii\db\Exception;
 use yii\helpers\FileHelper;
-use yii\helpers\VarDumper;
-use yii\imagine\Image;
 use yii\web\BadRequestHttpException;
-use yii\web\Controller;
 use yii\web\ForbiddenHttpException;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
@@ -22,18 +19,18 @@ use yii\web\UploadedFile;
 /**
  * ProviderController implements the CRUD actions for Provider model.
  */
-class ProviderController extends Controller
+class ProviderController extends BaseController
 {
     /**
      * @inheritDoc
      */
-    public function behaviors()
+    public function behaviors(): array
     {
         return array_merge(
             parent::behaviors(),
             [
                 'verbs' => [
-                    'class' => VerbFilter::className(),
+                    'class' => VerbFilter::class,
                     'actions' => [
                         'delete' => ['POST'],
                     ],
@@ -49,7 +46,7 @@ class ProviderController extends Controller
      */
     public function actionIndex()
     {
-        $searchModel = new Provier();
+        $searchModel = new Provider();
         $dataProvider = $searchModel->search($this->request->queryParams);
 
         return $this->render('index', [
@@ -91,7 +88,10 @@ class ProviderController extends Controller
 
                 if ($file) {
                     $fileName = uniqid() . '.' . $file->extension;
-                    $filePath = Yii::getAlias('@webroot') . '/uploads/logos/' . $fileName;
+                    $filePath = Yii::getAlias('@webroot') . '/uploads/logos/';
+
+                    FileHelper::createDirectory($filePath);
+                    $filePath .= $fileName;
 
                     if ($file->saveAs($filePath)) {
                         ImageHelper::resizeProportional(source: $filePath, maxWidth: 100, maxHeight: 100);
