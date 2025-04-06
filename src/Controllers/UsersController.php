@@ -3,6 +3,7 @@
 namespace App\Controllers;
 
 use App\Models\Forms\ProfileForm;
+use App\Models\Forms\RegisterForm;
 use App\Models\User;
 use App\Models\Search\UserSearch;
 use Yii;

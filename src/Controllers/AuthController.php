@@ -3,17 +3,15 @@
 
 namespace App\Controllers;
 
-use App\Models\LoginForm;
+use App\Models\Forms\LoginForm;
+use App\Models\Forms\RegisterForm;
 use app\models\User;
 use Yii;
 use yii\web\Response;
 
 class AuthController extends \yii\web\Controller
 {
-    public function actionLogar()
-    {
-        return $this->render('logar');
-    }
+
 
     public function actionLogin()
     {
@@ -46,6 +44,24 @@ class AuthController extends \yii\web\Controller
         Yii::$app->user->logout();
 
         return $this->goHome();
+    }
+
+    public function actionRegister()
+    {
+        $this->layout = '@app/views/layouts/login';
+        $form = new RegisterForm();
+
+        if ($form->load(Yii::$app->request->post()) && $form->validate()) {
+
+            if ($form->register()) {
+                Yii::$app->session->setFlash('success',  "Usuário registrado com sucesso! <br>Você já pode fazer login.");
+                return $this->goHome();
+            }
+        }
+
+        return $this->render('register', [
+            'model' => $form,
+        ]);
     }
 
 }

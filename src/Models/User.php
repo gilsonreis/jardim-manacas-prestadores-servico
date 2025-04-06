@@ -50,13 +50,7 @@ class User extends \yii\db\ActiveRecord implements IdentityInterface
             [['name'], 'string', 'max' => 50],
             [['email'], 'string', 'max' => 120],
             [['password', 'access_token', 'photo'], 'string', 'max' => 80],
-            ['password', 'string', 'min' => 6],
-            [['repeatPassword'], 'compare', 'compareAttribute' => 'password',
-                'skipOnEmpty' => false, 'message' => 'Senhas não conferem.',
-                'when' => function ($model) {
-                    return $model->password !== null && $model->password !== '';
-                }
-            ],
+            ['password', 'string', 'min' => 6]
         ];
     }
 

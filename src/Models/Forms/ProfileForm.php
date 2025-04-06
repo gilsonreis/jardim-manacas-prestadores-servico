@@ -9,6 +9,7 @@ use yii\helpers\FileHelper;
 use yii\helpers\VarDumper;
 use yii\imagine\Image;
 use yii\web\IdentityInterface;
+use yii\web\UploadedFile;
 
 class ProfileForm extends Model
 {
@@ -56,9 +57,9 @@ class ProfileForm extends Model
             $user->password = Yii::$app->security->generatePasswordHash($this->password);
         }
 
-        $this->photo = \yii\web\UploadedFile::getInstance($this, 'photo');
+        $this->photo = UploadedFile::getInstance($this, 'photo');
 
-        if ($this->photo instanceof \yii\web\UploadedFile) {
+        if ($this->photo instanceof UploadedFile) {
             if (!empty($this->photoName)) {
                 $oldFile = Yii::getAlias('@webroot') . '/uploads/users/' . $this->photoName;
                 if (file_exists($oldFile)) {

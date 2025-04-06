@@ -3,8 +3,9 @@
 /** @var yii\web\View $this */
 /** @var yii\bootstrap5\ActiveForm $form */
 
-/** @var \App\Models\LoginForm $model */
+/** @var \App\Models\Forms\LoginForm $model */
 
+use kartik\alert\AlertBlock;
 use yii\bootstrap5\ActiveForm;
 use yii\bootstrap5\Html;
 
@@ -17,7 +18,17 @@ $this->params['breadcrumbs'][] = $this->title;
 </div>
 <h3 class="text-center m-b-20">Catálogo de Prestadores de Serviços</h3>
 <h4 class="text-center m-b-20">Jardim dos Manacás</h4>
-
+<div class='row'>
+    <div class='col-md-12 mt-2'>
+        <?php
+        echo AlertBlock::widget([
+            'useSessionFlash' => true,
+            'type' => AlertBlock::TYPE_ALERT,
+            'delay' => 5000
+        ]);
+        ?>
+    </div>
+</div>
 <div class="form-group ">
     <div class="col-xs-12">
         <?= $form->field($model, 'username', [
@@ -43,10 +54,10 @@ $this->params['breadcrumbs'][] = $this->title;
     </div>
     <div class="d-flex justify-content-between">
         <div class="col-xs-12 p-b-20">
-            <?= Html::a('Cadastrar-se', ['auth/cadastre-se'], ['class' => 'btn btn-link btn-link-login']) ?>
+            <?= Html::a('Cadastrar-se', ['cadastre-se'], ['class' => 'btn btn-link btn-link-login']) ?>
         </div>
         <div class="col-xs-12 p-b-20">
-            <?= Html::a('Esqueci minha senha', ['auth/esqueci-minha-senha'], ['class' => 'btn btn-link btn-link-login']) ?>
+            <?= Html::a('Esqueci minha senha', ['esqueci-minha-senha'], ['class' => 'btn btn-link btn-link-login']) ?>
         </div>
     </div>
 </div>
