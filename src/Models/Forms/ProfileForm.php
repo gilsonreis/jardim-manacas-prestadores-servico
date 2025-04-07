@@ -35,6 +35,17 @@ class ProfileForm extends Model
         ];
     }
 
+    public function attributeLabels(): array
+    {
+        return [
+            'name' => 'Nome',
+            'email' => 'Email',
+            'password' => 'Senha',
+            'repeatPassword' => 'Confirme a Senha',
+            'accept_email' => 'Quero receber emails sobre novos prestadores',
+        ];
+    }
+
     public function validateCurrentPassword()
     {
         if (!empty($this->password)) {

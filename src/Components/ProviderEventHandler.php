@@ -16,6 +16,7 @@ class ProviderEventHandler
 
         $users = User::find()
             ->where(['accept_email' => 1, 'isDeleted' => 0])
+            ->andWhere(['<>', 'id', $provider->user_id])
             ->all();
 
         foreach ($users as $user) {
