@@ -1,11 +1,11 @@
 <?php
 
 use App\Components\EventBootstrap;
-use yii\symfonymailer\Mailer;
 
 $params = require __DIR__ . '/params.php';
 $db = require __DIR__ . '/db.php';
 $routes = require __DIR__ . '/routes.php';
+$mailer = require __DIR__ . '/mailer.php';
 
 $config = [
     'id' => 'prestadores-manacas',
@@ -49,15 +49,7 @@ $config = [
             'class' => 'yii\web\ErrorHandler',
             'errorAction' => 'site/error'
         ],
-        'mailer' => [
-            'class' => Mailer::class,
-            'viewPath' => '@app/mail',
-            'useFileTransport' => false, // altere para false em produção
-            'transport' => [
-//                'dsn' => 'smtp://no-reply@simplifysoftwares.com.br:ie2jZ4E5@smtp.simplifysoftwares.com.br.com:587',
-                'dsn' => 'smtp://8e1ed41324d290:5524b24f2560ce@sandbox.smtp.mailtrap.io:2525'
-            ],
-        ],
+        'mailer' => $mailer,
         'log' => [
             'traceLevel' => YII_DEBUG ? 3 : 0,
             'targets' => [

@@ -19,7 +19,7 @@ $this->registerLinkTag(['rel' => 'icon', 'type' => 'image/x-icon', 'href' => Yii
 <?php $this->beginPage() ?>
 
 <!DOCTYPE html>
-<html lang='<?= Yii::$app->language ?>'>
+<html lang='<?= Yii::$app->language ?>' data-coreui-theme='light'>
 <head>
     <title><?php echo $this->title ? $this->title . " | " : "" ?> Jardim dos Manacás - Sistema de Utilidades </title>
     <?php $this->head() ?>
