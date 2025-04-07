@@ -23,6 +23,9 @@ $this->registerLinkTag(['rel' => 'icon', 'type' => 'image/x-icon', 'href' => Yii
 <head>
     <title><?php echo $this->title ? $this->title . " | " : "" ?> Jardim dos Manacás - Sistema de Utilidades </title>
     <?php $this->head() ?>
+    <script>
+        window.localStorage.setItem('coreui-free-bootstrap-admin-template-theme', 'light');
+    </script>
 </head>
 <body>
 <?php $this->beginBody() ?>
@@ -142,10 +145,6 @@ $this->registerLinkTag(['rel' => 'icon', 'type' => 'image/x-icon', 'href' => Yii
 </script>
 
 <?php $this->endBody() ?>
-
-<script>
-    window.localStorage.setItem('coreui-free-bootstrap-admin-template-theme', 'light');
-</script>
 </body>
 </html>
 <?php $this->endPage() ?>
