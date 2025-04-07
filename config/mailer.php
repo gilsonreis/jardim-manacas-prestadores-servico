@@ -10,11 +10,11 @@ return [
 //                'dsn' => 'smtp://no-reply@simplifysoftwares.com.br:ie2jZ4E5@smtp.simplifysoftwares.com.br.com:587',
         'dsn' => sprintf(
             '%s://%s:%s@%s:%s',
-            getenv('SMTP_ENCRYPTION'), // smtp, smtp+tls, smtp+ssl
-            getenv('SMTP_USERNAME'),
-            getenv('SMTP_PASSWORD'),
-            getenv('SMTP_HOST'),
-            getenv('SMTP_PORT')
+            $_ENV['SMTP_ENCRYPTION'], // smtp, smtp+tls, smtp+ssl
+            $_ENV['SMTP_USERNAME'],
+            $_ENV['SMTP_PASSWORD'],
+            $_ENV['SMTP_HOST'],
+            $_ENV['SMTP_PORT']
         ),
     ],
 ];
