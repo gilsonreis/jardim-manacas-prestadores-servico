@@ -139,6 +139,12 @@ $this->registerLinkTag(['rel' => 'icon', 'type' => 'image/x-icon', 'href' => Yii
             header.classList.toggle('shadow-sm', document.documentElement.scrollTop > 0);
         }
     });
+
+    const theme = 'light';
+    setStoredTheme(theme);
+    setTheme(theme);
+    showActiveTheme(theme);
+
 </script>
 
 <?php $this->endBody() ?>
