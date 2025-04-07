@@ -144,10 +144,7 @@ $this->registerLinkTag(['rel' => 'icon', 'type' => 'image/x-icon', 'href' => Yii
 <?php $this->endBody() ?>
 
 <script>
-    const theme = 'light';
-    setStoredTheme(theme);
-    setTheme(theme);
-    showActiveTheme(theme);
+    window.localStorage.setItem('coreui-free-bootstrap-admin-template-theme', 'light');
 </script>
 </body>
 </html>
