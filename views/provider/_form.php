@@ -14,7 +14,7 @@
         </div>
         <div class="col-md-6">
             <?= $form->field($model, 'service_type_id')->dropDownList(
-                \yii\helpers\ArrayHelper::map(\App\Models\ServiceType::find()->all(), 'id', 'name'),
+                \yii\helpers\ArrayHelper::map(\App\Models\ServiceType::find()->orderBy('name')->all(), 'id', 'name'),
                 ['prompt' => 'Selecione o tipo do serviço']
             ) ?>
         </div>

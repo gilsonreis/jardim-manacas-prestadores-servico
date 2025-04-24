@@ -41,6 +41,13 @@ $this->params['breadcrumbs'][] = $this->title;
             'accept_email:boolean',
             'mobile_fone',
             'contact_name',
+            [
+                    'attribute' => 'user_id',
+                    'label' => 'Quem sugeriu?',
+                    'value' => function ($model) {
+                        return $model->user->name ?? 'Não informado';
+                    },
+            ],
             'contact_phone'
         ],
     ]) ?>
